@@ -1,0 +1,263 @@
+{
+	"codeLines":62,
+	"dispatchTime":1795456257633,
+	"results":[
+		{
+			"agent":"StyleAgent",
+			"dimension":"style",
+			"findings":[
+				{
+					"agent":"StyleAgent",
+					"line":3,
+					"message":"使用了通配符 import",
+					"rule":"STYLE-WILDCARD-IMPORT",
+					"severity":"LOW",
+					"snippet":"import java.io.*;",
+					"suggestion":"显式导入需要的类"
+				},
+				{
+					"agent":"StyleAgent",
+					"line":15,
+					"message":"类名不符合 UpperCamelCase",
+					"rule":"STYLE-CLASS-NAME",
+					"severity":"MEDIUM",
+					"snippet":"public class order_controller {",
+					"suggestion":"类、接口、枚举名使用大驼峰, 如 OrderService"
+				},
+				{
+					"agent":"StyleAgent",
+					"line":16,
+					"message":"常量 dbPassword 未使用全大写下划线命名",
+					"rule":"STYLE-CONSTANT-NAME",
+					"severity":"LOW",
+					"snippet":"private static final String dbPassword = \"Shop@123456\";",
+					"suggestion":"常量命名如 MAX_RETRY_TIMES"
+				},
+				{
+					"agent":"StyleAgent",
+					"line":17,
+					"message":"常量 max_retry 未使用全大写下划线命名",
+					"rule":"STYLE-CONSTANT-NAME",
+					"severity":"LOW",
+					"snippet":"private static final int max_retry = 3;",
+					"suggestion":"常量命名如 MAX_RETRY_TIMES"
+				},
+				{
+					"agent":"StyleAgent",
+					"line":19,
+					"message":"方法名 QueryOrder 不符合 lowerCamelCase",
+					"rule":"STYLE-METHOD-NAME",
+					"severity":"MEDIUM",
+					"snippet":"public void QueryOrder(HttpServletRequest request, HttpServletResponse response) throws Exception {",
+					"suggestion":"方法名使用小驼峰, 如 queryOrder"
+				},
+				{
+					"agent":"StyleAgent",
+					"line":30,
+					"message":"变量 Total_Amount 不符合 lowerCamelCase",
+					"rule":"STYLE-VARIABLE-NAME",
+					"severity":"LOW",
+					"snippet":"int Total_Amount = 0;",
+					"suggestion":"变量名使用小驼峰, 如 orderCount"
+				},
+				{
+					"agent":"StyleAgent",
+					"line":38,
+					"message":"if/for/while 语句省略了大括号",
+					"rule":"STYLE-BRACES",
+					"severity":"MEDIUM",
+					"snippet":"if (status == \"PAID\") return true;",
+					"suggestion":"即使只有一行也加上大括号"
+				},
+				{
+					"agent":"StyleAgent",
+					"line":54,
+					"message":"业务代码中直接使用 System.out/err",
+					"rule":"STYLE-SYSTEM-OUT",
+					"severity":"LOW",
+					"snippet":"System.out.println(\"coupon seed: \" + seed);",
+					"suggestion":"使用 SLF4J 等日志框架输出"
+				}
+			],
+			"finishedTime":1795456257948,
+			"host":"9380@考拉的笔记本",
+			"receivedTime":1795456257924,
+			"sessionId":"2601210448-session-20261123125055-0c8d9321"
+		},
+		{
+			"agent":"LogicAgent",
+			"dimension":"logic",
+			"findings":[
+				{
+					"agent":"LogicAgent",
+					"line":21,
+					"message":"流 / 连接未放在 try-with-resources 中, 异常路径下不会关闭",
+					"rule":"LOGIC-RESOURCE-LEAK",
+					"severity":"HIGH",
+					"snippet":"Connection conn = DriverManager.getConnection(\"jdbc:mysql://db:3306/shop\", \"root\", dbPassword);",
+					"suggestion":"使用 try (Resource r = ...) { } 自动关闭"
+				},
+				{
+					"agent":"LogicAgent",
+					"line":22,
+					"message":"流 / 连接未放在 try-with-resources 中, 异常路径下不会关闭",
+					"rule":"LOGIC-RESOURCE-LEAK",
+					"severity":"HIGH",
+					"snippet":"Statement stmt = conn.createStatement();",
+					"suggestion":"使用 try (Resource r = ...) { } 自动关闭"
+				},
+				{
+					"agent":"LogicAgent",
+					"line":31,
+					"message":"循环条件使用 <= length/size(), 最后一次迭代会越界",
+					"rule":"LOGIC-OFF-BY-ONE",
+					"severity":"HIGH",
+					"snippet":"for (int i = 0; i <= amounts.size(); i++) {",
+					"suggestion":"改为 < length / < size()"
+				},
+				{
+					"agent":"LogicAgent",
+					"line":34,
+					"message":"先做整数除法再转 double, 小数部分已经丢失",
+					"rule":"LOGIC-INT-DIVISION",
+					"severity":"MEDIUM",
+					"snippet":"return (double) (Total_Amount / amounts.size());",
+					"suggestion":"先转型再除: (double) a / b"
+				},
+				{
+					"agent":"LogicAgent",
+					"line":38,
+					"message":"使用 ==/!= 比较字符串, 比较的是引用而不是内容",
+					"rule":"LOGIC-STRING-EQ",
+					"severity":"HIGH",
+					"snippet":"if (status == \"PAID\") return true;",
+					"suggestion":"改用 equals(), 如 \"PAID\".equals(status)"
+				},
+				{
+					"agent":"LogicAgent",
+					"line":39,
+					"message":"变量在前调用 equals(\"常量\"), 变量为 null 时抛 NullPointerException",
+					"rule":"LOGIC-NPE-EQUALS",
+					"severity":"MEDIUM",
+					"snippet":"return status.equals(\"PAID_PARTIAL\");",
+					"suggestion":"把常量写在前面: \"常量\".equals(变量), 或用 Objects.equals"
+				},
+				{
+					"agent":"LogicAgent",
+					"line":44,
+					"message":"流 / 连接未放在 try-with-resources 中, 异常路径下不会关闭",
+					"rule":"LOGIC-RESOURCE-LEAK",
+					"severity":"HIGH",
+					"snippet":"BufferedReader reader = new BufferedReader(new FileReader(\"/data/invoice/\" + fileName));",
+					"suggestion":"使用 try (Resource r = ...) { } 自动关闭"
+				},
+				{
+					"agent":"LogicAgent",
+					"line":46,
+					"message":"空 catch 块吞掉了异常, 出错时无任何痕迹",
+					"rule":"LOGIC-EMPTY-CATCH",
+					"severity":"HIGH",
+					"snippet":"} catch (IOException e) {",
+					"suggestion":"至少记录日志, 或向上抛出包装后的业务异常"
+				},
+				{
+					"agent":"LogicAgent",
+					"line":48,
+					"message":"返回 null, 调用方容易漏判空",
+					"rule":"LOGIC-RETURN-NULL-COLLECTION",
+					"severity":"LOW",
+					"snippet":"return null;",
+					"suggestion":"集合返回 Collections.emptyList(), 单值考虑 Optional"
+				}
+			],
+			"finishedTime":1795456257937,
+			"host":"12592@考拉的笔记本",
+			"receivedTime":1795456257924,
+			"sessionId":"2601210448-session-20261123125055-0c8d9321"
+		},
+		{
+			"agent":"SecurityAgent",
+			"dimension":"security",
+			"findings":[
+				{
+					"agent":"SecurityAgent",
+					"line":16,
+					"message":"代码中硬编码了密码 / 密钥 (CWE-798)",
+					"rule":"SEC-HARDCODED-SECRET",
+					"severity":"HIGH",
+					"snippet":"private static final String dbPassword = \"Shop@123456\";",
+					"suggestion":"放到配置中心或环境变量, 并加密存储"
+				},
+				{
+					"agent":"SecurityAgent",
+					"line":23,
+					"message":"执行由拼接得到的 SQL (CWE-89)",
+					"rule":"SEC-SQL-EXECUTE",
+					"severity":"HIGH",
+					"snippet":"ResultSet rs = stmt.executeQuery(\"SELECT * FROM orders WHERE user_id = '\" + userId + \"'\");",
+					"suggestion":"改用 PreparedStatement 并绑定参数"
+				},
+				{
+					"agent":"SecurityAgent",
+					"line":23,
+					"message":"SQL 语句由字符串拼接用户输入构造, 存在 SQL 注入风险 (CWE-89)",
+					"rule":"SEC-SQL-INJECTION",
+					"severity":"HIGH",
+					"snippet":"ResultSet rs = stmt.executeQuery(\"SELECT * FROM orders WHERE user_id = '\" + userId + \"'\");",
+					"suggestion":"使用 PreparedStatement 占位符 ? 或 ORM 参数绑定"
+				},
+				{
+					"agent":"SecurityAgent",
+					"line":25,
+					"message":"未经转义把请求参数直接输出到页面, 存在 XSS 风险 (CWE-79)",
+					"rule":"SEC-XSS",
+					"severity":"HIGH",
+					"snippet":"response.getWriter().println(\"<td>\" + request.getParameter(\"keyword\") + \"</td>\");",
+					"suggestion":"输出前做 HTML 转义 (如 StringEscapeUtils.escapeHtml4), 或使用模板引擎自动转义"
+				},
+				{
+					"agent":"SecurityAgent",
+					"line":44,
+					"message":"用外部输入拼接文件路径, 可能被 ../ 穿越访问任意文件 (CWE-22)",
+					"rule":"SEC-PATH-TRAVERSAL",
+					"severity":"HIGH",
+					"snippet":"BufferedReader reader = new BufferedReader(new FileReader(\"/data/invoice/\" + fileName));",
+					"suggestion":"规范化路径后校验必须位于允许的目录内"
+				},
+				{
+					"agent":"SecurityAgent",
+					"line":52,
+					"message":"java.util.Random 可预测, 不能用于生成令牌、验证码",
+					"rule":"SEC-INSECURE-RANDOM",
+					"severity":"MEDIUM",
+					"snippet":"String seed = String.valueOf(new Random().nextInt());",
+					"suggestion":"使用 SecureRandom"
+				},
+				{
+					"agent":"SecurityAgent",
+					"line":53,
+					"message":"使用 MD5/SHA-1 等弱哈希 (CWE-327)",
+					"rule":"SEC-WEAK-HASH",
+					"severity":"MEDIUM",
+					"snippet":"MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+					"suggestion":"密码用 BCrypt/PBKDF2, 摘要用 SHA-256 及以上"
+				},
+				{
+					"agent":"SecurityAgent",
+					"line":59,
+					"message":"拼接外部输入执行系统命令, 存在命令注入风险 (CWE-78)",
+					"rule":"SEC-COMMAND-INJECTION",
+					"severity":"HIGH",
+					"snippet":"Runtime.getRuntime().exec(\"sh /opt/report.sh \" + date);",
+					"suggestion":"使用参数数组形式并对输入做白名单校验"
+				}
+			],
+			"finishedTime":1795456257939,
+			"host":"16236@考拉的笔记本",
+			"receivedTime":1795456257927,
+			"sessionId":"2601210448-session-20261123125055-0c8d9321"
+		}
+	],
+	"sessionId":"2601210448-session-20261123125055-0c8d9321",
+	"source":"OrderController.java"
+}

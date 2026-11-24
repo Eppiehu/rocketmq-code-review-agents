@@ -1,0 +1,17 @@
+> 各 Agent 日志中本次会话 (acb61fe2) 的处理记录
+---- style
+12:52:44.860 INFO  [StyleAgent] received task, session=2601210448-session-20261123125243-acb61fe2, source=OrderController.java, lines=61, queueDelay=107ms
+12:52:44.865 INFO  [StyleAgent] done, session=2601210448-session-20261123125243-acb61fe2, findings=8, cost=5ms -> reply to LiteTopic 2601210448-session-20261123125243-acb
+    61fe2
+---- logic
+12:52:44.861 INFO  [LogicAgent] received task, session=2601210448-session-20261123125243-acb61fe2, source=OrderController.java, lines=61, queueDelay=104ms
+12:52:44.863 INFO  [LogicAgent] done, session=2601210448-session-20261123125243-acb61fe2, findings=9, cost=3ms -> reply to LiteTopic 2601210448-session-20261123125243-acb
+    61fe2
+---- security
+12:52:44.861 INFO  [SecurityAgent] received task, session=2601210448-session-20261123125243-acb61fe2, source=OrderController.java, lines=61, queueDelay=104ms
+12:52:44.863 INFO  [SecurityAgent] done, session=2601210448-session-20261123125243-acb61fe2, findings=8, cost=3ms -> reply to LiteTopic 2601210448-session-20261123125243-
+    acb61fe2
+---- summary
+12:52:45.737 INFO  [SummaryAgent] received 3 results, session=2601210448-session-20261123125243-acb61fe2
+12:52:45.738 INFO  [SummaryAgent] report generated, session=2601210448-session-20261123125243-acb61fe2, 3386 chars -> reply to LiteTopic 2601210448-session-20261123125243
+    -acb61fe2

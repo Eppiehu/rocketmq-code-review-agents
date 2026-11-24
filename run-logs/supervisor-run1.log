@@ -1,0 +1,26 @@
+﻿[12:41:58.082] ==== SupervisorAgent 启动, 学号 2601210448 ====
+[12:41:58.086] 审查对象: OrderController.java (62 行)
+[12:41:58.086] 会话 ID / LiteTopic: 2601210448-session-20261123124158-3ec01964
+[12:41:58.086] 结果回传: LiteTopic 父 Topic rmqai-2601210448-review-result, 消费者组 GID_2601210448_supervisor
+java.exe : SLF4J: Class path contains multiple SLF4J providers.
+At line:2 char:1
++ & 'C:\Program Files\Eclipse Adoptium\jdk-17.0.19.10-hotspot\bin\java. ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (SLF4J: Class pa...LF4J providers.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+SLF4J: Found provider [org.slf4j.impl.JBossSlf4jServiceProvider@6aa8e115]
+SLF4J: Found provider [org.slf4j.simple.SimpleServiceProvider@5e21e98f]
+SLF4J: See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual provider is of type [org.slf4j.impl.JBossSlf4jServiceProvider@6aa8e115]
+[12:41:59.210] 发现 Agent: StyleAgent -> http://127.0.0.1:8081//rmqai-2601210448-review-task-style
+[12:41:59.451] 发现 Agent: LogicAgent -> http://127.0.0.1:8081//rmqai-2601210448-review-task-logic
+[12:41:59.675] 发现 Agent: SecurityAgent -> http://127.0.0.1:8081//rmqai-2601210448-review-task-security
+[12:41:59.915] 发现 Agent: SummaryAgent -> http://127.0.0.1:8081//rmqai-2601210448-review-task-summary
+[12:41:59.919] -> 分发给 style Agent, messageId=2601210448-session-20261123124158-3ec01964-style-aedd67df
+[12:41:59.919] 已并行分发 3 个审查任务, 等待结果回传到 LiteTopic 2601210448-session-20261123124158-3ec01964 ...
+[12:41:59.920] -> 分发给 logic Agent, messageId=2601210448-session-20261123124158-3ec01964-logic-4e15091b
+[12:41:59.920] -> 分发给 security Agent, messageId=2601210448-session-20261123124158-3ec01964-security-c1f09345
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke 
+"edu.homework.rmqai.common.model.ReviewResult.getAgent()" because "r" is null
+	at edu.homework.rmqai.supervisor.SupervisorAgentMain.main(SupervisorAgentMain.java:115)

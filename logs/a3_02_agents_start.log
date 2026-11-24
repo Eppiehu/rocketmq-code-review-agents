@@ -1,0 +1,21 @@
+> .\scripts\start-agents.ps1   (同一个 jar, -DagentRole 选择角色)
+---- style
+[RocketMQA2AServerRoutes] RocketMQA2AServerRoutes init successfully, bizTopic: [rmqai-2601210448-review-task-style], bizConsumerGroup: [GID_2601210448_style], workAg
+    entResponseTopic: [GID_2601210448_agent_p2p], workAgentResponseGroupID: [rmqai-2601210448-agent-p2p], serverLiteTopic: [2601210448-style-7f90293d-d681-4355-a8fd-
+    35a4ae3eae85]
+[quarkus] review-agent 1.0.0 on JVM (powered by Quarkus 3.24.5) started in 1.319s. Listening on: http://0.0.0.0:18091
+---- logic
+[RocketMQA2AServerRoutes] RocketMQA2AServerRoutes init successfully, bizTopic: [rmqai-2601210448-review-task-logic], bizConsumerGroup: [GID_2601210448_logic], workAg
+    entResponseTopic: [GID_2601210448_agent_p2p], workAgentResponseGroupID: [rmqai-2601210448-agent-p2p], serverLiteTopic: [2601210448-logic-5eaf6351-98d6-433d-aeed-
+    c512897c1345]
+[quarkus] review-agent 1.0.0 on JVM (powered by Quarkus 3.24.5) started in 1.315s. Listening on: http://0.0.0.0:18092
+---- security
+[RocketMQA2AServerRoutes] RocketMQA2AServerRoutes init successfully, bizTopic: [rmqai-2601210448-review-task-security], bizConsumerGroup: [GID_2601210448_security], 
+    workAgentResponseTopic: [GID_2601210448_agent_p2p], workAgentResponseGroupID: [rmqai-2601210448-agent-p2p], serverLiteTopic: [2601210448-security-04dad87a-b2dc-4
+    b04-bee4-401f19fe0ba2]
+[quarkus] review-agent 1.0.0 on JVM (powered by Quarkus 3.24.5) started in 1.312s. Listening on: http://0.0.0.0:18093
+---- summary
+[RocketMQA2AServerRoutes] RocketMQA2AServerRoutes init successfully, bizTopic: [rmqai-2601210448-review-task-summary], bizConsumerGroup: [GID_2601210448_summary], wo
+    rkAgentResponseTopic: [GID_2601210448_agent_p2p], workAgentResponseGroupID: [rmqai-2601210448-agent-p2p], serverLiteTopic: [2601210448-summary-b96a351a-ac5c-44f6
+    -a2fd-5089ad663f94]
+[quarkus] review-agent 1.0.0 on JVM (powered by Quarkus 3.24.5) started in 1.313s. Listening on: http://0.0.0.0:18094

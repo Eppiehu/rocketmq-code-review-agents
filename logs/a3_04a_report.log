@@ -1,0 +1,37 @@
+> type reports\2601210448-session-20261123125243-acb61fe2.md
+# 代码审查报告
+
+| 项目 | 内容 |
+|---|---|
+| 会话 ID (LiteTopic) | `2601210448-session-20261123125243-acb61fe2` |
+| 审查对象 | OrderController.java（62 行） |
+| 生成时间 | 2026-11-23 12:52:45 |
+| 综合评分 | **0 / 100** |
+| 结论 | ❌ 拒绝合并：存在高危安全问题，必须先修复 |
+
+## 各 Agent 审查概况
+
+| Agent | 维度 | 高 | 中 | 低 | 收到任务 | 完成 | 耗时 |
+|---|---|---|---|---|---|---|---|
+| StyleAgent | style | 0 | 3 | 5 | 12:52:44.860 | 12:52:44.865 | 5 ms |
+| LogicAgent | logic | 6 | 2 | 1 | 12:52:44.860 | 12:52:44.863 | 3 ms |
+| SecurityAgent | security | 6 | 2 | 0 | 12:52:44.860 | 12:52:44.863 | 3 ms |
+| **合计** | | **12** | **7** | **6** | | | |
+
+## 高优先级问题（12）
+
+| 行 | Agent | 规则 | 问题 | 建议 |
+|---|---|---|---|---|
+| 16 | Security | SEC-HARDCODED-SECRET | 代码中硬编码了密码 / 密钥 (CWE-798) | 放到配置中心或环境变量, 并加密存储 |
+| 21 | Logic | LOGIC-RESOURCE-LEAK | 流 / 连接未放在 try-with-resources 中, 异常路径下不会关闭 | 使用 try (Resource r = ...) { } 自动关闭 |
+| 22 | Logic | LOGIC-RESOURCE-LEAK | 流 / 连接未放在 try-with-resources 中, 异常路径下不会关闭 | 使用 try (Resource r = ...) { } 自动关闭 |
+| 23 | Security | SEC-SQL-EXECUTE | 执行由拼接得到的 SQL (CWE-89) | 改用 PreparedStatement 并绑定参数 |
+| 23 | Security | SEC-SQL-INJECTION | SQL 语句由字符串拼接用户输入构造, 存在 SQL 注入风险 (CWE-89) | 使用 PreparedStatement 占位符 ? 或 ORM 参数绑定 |
+| 25 | Security | SEC-XSS | 未经转义把请求参数直接输出到页面, 存在 XSS 风险 (CWE-79) | 输出前做 HTML 转义 (如 StringEscapeUtils.escapeHtml4), 或使用模板引擎自动转义 |
+| 31 | Logic | LOGIC-OFF-BY-ONE | 循环条件使用 <= length/size(), 最后一次迭代会越界 | 改为 < length / < size() |
+| 38 | Logic | LOGIC-STRING-EQ | 使用 ==/!= 比较字符串, 比较的是引用而不是内容 | 改用 equals(), 如 "PAID".equals(status) |
+| 44 | Logic | LOGIC-RESOURCE-LEAK | 流 / 连接未放在 try-with-resources 中, 异常路径下不会关闭 | 使用 try (Resource r = ...) { } 自动关闭 |
+| 44 | Security | SEC-PATH-TRAVERSAL | 用外部输入拼接文件路径, 可能被 ../ 穿越访问任意文件 (CWE-22) | 规范化路径后校验必须位于允许的目录内 |
+| 46 | Logic | LOGIC-EMPTY-CATCH | 空 catch 块吞掉了异常, 出错时无任何痕迹 | 至少记录日志, 或向上抛出包装后的业务异常 |
+| 59 | Security | SEC-COMMAND-INJECTION | 拼接外部输入执行系统命令, 存在命令注入风险 (CWE-78) | 使用参数数组形式并对输入做白名单校验 |
+

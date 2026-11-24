@@ -1,0 +1,10 @@
+> mqadmin getLiteTopicInfo -p rmqai-2601210448-review-result -l 2601210448-session-20261123125243-acb61fe2
+Lite Topic Info: [rmqai-2601210448-review-result] [2601210448-session-20261123125243-acb61fe2] [%LMQ%$rmqai-2601210448-review-result$2601210448-session-20261123125243-acb61fe2]
+#Broker Name                                       #MinOffset     #MaxOffset     #LastUpdate                    #Sharding    #SubClientCount
+broker-a                                           0              4              2026-11-23 12:52:45,742        true         0
+
+> mqadmin getLiteGroupInfo -g GID_2601210448_supervisor -p rmqai-2601210448-review-result -l 2601210448-session-20261123125243-acb61fe2
+Lite Group Info: [GID_2601210448_supervisor] [rmqai-2601210448-review-result]
+#Broker Name                                       #BrokerOffset    #ConsumeOffset   #LagCount        #LastUpdate
+broker-a                                           4                4                0                2026-11-23 12:52:45,742
+Total Lag Count: 0

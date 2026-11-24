@@ -1,0 +1,11 @@
+SLF4J: Class path contains multiple SLF4J providers.
+SLF4J: Found provider [org.slf4j.impl.JBossSlf4jServiceProvider@5f20155b]
+SLF4J: Found provider [org.slf4j.simple.SimpleServiceProvider@72ade7e3]
+SLF4J: See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual provider is of type [org.slf4j.impl.JBossSlf4jServiceProvider@5f20155b]
+[12:49:54.641] 审查失败: java.util.concurrent.TimeoutException
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at edu.homework.rmqai.supervisor.SupervisorAgentMain.run(SupervisorAgentMain.java:124)
+	at edu.homework.rmqai.supervisor.SupervisorAgentMain.main(SupervisorAgentMain.java:65)

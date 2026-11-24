@@ -1,0 +1,12 @@
+[12:48:27.054] ==== SupervisorAgent 启动, 学号 2601210448 ====
+[12:48:27.060] 审查对象: OrderController.java (62 行)
+[12:48:27.060] 会话 ID / LiteTopic: 2601210448-session-20261123124826-9e296b22
+[12:48:27.061] 结果回传: LiteTopic 父 Topic rmqai-2601210448-review-result, 消费者组 GID_2601210448_supervisor
+[12:48:27.906] 发现 Agent: StyleAgent -> http://127.0.0.1:8081//rmqai-2601210448-review-task-style
+[12:48:27.936] 发现 Agent: LogicAgent -> http://127.0.0.1:8081//rmqai-2601210448-review-task-logic
+[12:48:27.955] 发现 Agent: SecurityAgent -> http://127.0.0.1:8081//rmqai-2601210448-review-task-security
+[12:48:27.974] 发现 Agent: SummaryAgent -> http://127.0.0.1:8081//rmqai-2601210448-review-task-summary
+[12:48:27.980] 已并行分发 3 个审查任务, 等待结果回传到 LiteTopic 2601210448-session-20261123124826-9e296b22 ...
+[12:48:27.980] -> 分发给 security Agent, messageId=2601210448-session-20261123124826-9e296b22-security-9495ac86
+[12:48:27.980] -> 分发给 logic Agent, messageId=2601210448-session-20261123124826-9e296b22-logic-b92cb03e
+[12:48:27.980] -> 分发给 style Agent, messageId=2601210448-session-20261123124826-9e296b22-style-3c462ec4

@@ -1,0 +1,23 @@
+> mqadmin topicList -n 127.0.0.1:9876  (筛选学号)
+rmqai-2601210448-agent-p2p
+rmqai-2601210448-review-result
+rmqai-2601210448-review-task-logic
+rmqai-2601210448-review-task-security
+rmqai-2601210448-review-task-style
+rmqai-2601210448-review-task-summary
+
+> Topic 类型 (updateTopic 时 -a +message.type=...)
+  rmqai-2601210448-review-task-style      attributes={+message.type=NORMAL}
+  rmqai-2601210448-review-task-logic      attributes={+message.type=NORMAL}
+  rmqai-2601210448-review-task-security   attributes={+message.type=NORMAL}
+  rmqai-2601210448-review-task-summary    attributes={+message.type=NORMAL}
+  rmqai-2601210448-review-result          attributes={+message.type=LITE}
+  rmqai-2601210448-agent-p2p              attributes={+message.type=LITE}
+
+> 消费者组 (updateSubGroup)
+  GID_2601210448_style         attributes={}
+  GID_2601210448_logic         attributes={}
+  GID_2601210448_security      attributes={}
+  GID_2601210448_summary       attributes={}
+  GID_2601210448_supervisor    attributes={+lite.bind.topic=rmqai-2601210448-review-result}
+  GID_2601210448_agent_p2p     attributes={+lite.bind.topic=rmqai-2601210448-agent-p2p}

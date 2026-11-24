@@ -1,0 +1,27 @@
+(报告续)
+## 中优先级问题（7）
+
+| 行 | Agent | 规则 | 问题 | 建议 |
+|---|---|---|---|---|
+| 15 | Style | STYLE-CLASS-NAME | 类名不符合 UpperCamelCase | 类、接口、枚举名使用大驼峰, 如 OrderService |
+| 19 | Style | STYLE-METHOD-NAME | 方法名 QueryOrder 不符合 lowerCamelCase | 方法名使用小驼峰, 如 queryOrder |
+| 34 | Logic | LOGIC-INT-DIVISION | 先做整数除法再转 double, 小数部分已经丢失 | 先转型再除: (double) a / b |
+| 38 | Style | STYLE-BRACES | if/for/while 语句省略了大括号 | 即使只有一行也加上大括号 |
+| 39 | Logic | LOGIC-NPE-EQUALS | 变量在前调用 equals("常量"), 变量为 null 时抛 NullPointerException | 把常量写在前面: "常量".equals(变量), 或用 Objects.equals |
+| 52 | Security | SEC-INSECURE-RANDOM | java.util.Random 可预测, 不能用于生成令牌、验证码 | 使用 SecureRandom |
+| 53 | Security | SEC-WEAK-HASH | 使用 MD5/SHA-1 等弱哈希 (CWE-327) | 密码用 BCrypt/PBKDF2, 摘要用 SHA-256 及以上 |
+
+## 低优先级问题（6）
+
+| 行 | Agent | 规则 | 问题 | 建议 |
+|---|---|---|---|---|
+| 3 | Style | STYLE-WILDCARD-IMPORT | 使用了通配符 import | 显式导入需要的类 |
+| 16 | Style | STYLE-CONSTANT-NAME | 常量 dbPassword 未使用全大写下划线命名 | 常量命名如 MAX_RETRY_TIMES |
+| 17 | Style | STYLE-CONSTANT-NAME | 常量 max_retry 未使用全大写下划线命名 | 常量命名如 MAX_RETRY_TIMES |
+| 30 | Style | STYLE-VARIABLE-NAME | 变量 Total_Amount 不符合 lowerCamelCase | 变量名使用小驼峰, 如 orderCount |
+| 48 | Logic | LOGIC-RETURN-NULL-COLLECTION | 返回 null, 调用方容易漏判空 | 集合返回 Collections.emptyList(), 单值考虑 Optional |
+| 54 | Style | STYLE-SYSTEM-OUT | 业务代码中直接使用 System.out/err | 使用 SLF4J 等日志框架输出 |
+
+## 交叉命中
+
+多个 Agent 同时指出的位置，建议优先处理：第 16 行（StyleAgent、SecurityAgent）；第 38 行（StyleAgent、LogicAgent）；第 44 行（LogicAgent、SecurityAgent）

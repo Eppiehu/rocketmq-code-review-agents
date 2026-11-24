@@ -1,0 +1,45 @@
+{
+	"codeLines":103,
+	"dispatchTime":1795456368347,
+	"results":[
+		{
+			"agent":"StyleAgent",
+			"dimension":"style",
+			"findings":[
+				{
+					"agent":"StyleAgent",
+					"line":101,
+					"message":"单行 224 个字符, 超过 120",
+					"rule":"STYLE-LINE-LENGTH",
+					"severity":"LOW",
+					"snippet":"public void testExecuteDefaultWhenPullMessageByQueueGotException() throws SubCommandException, In...",
+					"suggestion":"拆分长表达式或参数列表"
+				}
+			],
+			"finishedTime":1795456368471,
+			"host":"9380@考拉的笔记本",
+			"receivedTime":1795456368465,
+			"sessionId":"2601210448-session-20261123125247-4ecd387a"
+		},
+		{
+			"agent":"LogicAgent",
+			"dimension":"logic",
+			"findings":[],
+			"finishedTime":1795456368467,
+			"host":"12592@考拉的笔记本",
+			"receivedTime":1795456368466,
+			"sessionId":"2601210448-session-20261123125247-4ecd387a"
+		},
+		{
+			"agent":"SecurityAgent",
+			"dimension":"security",
+			"findings":[],
+			"finishedTime":1795456368467,
+			"host":"16236@考拉的笔记本",
+			"receivedTime":1795456368465,
+			"sessionId":"2601210448-session-20261123125247-4ecd387a"
+		}
+	],
+	"sessionId":"2601210448-session-20261123125247-4ecd387a",
+	"source":"https://github.com/apache/rocketmq/pull/11416"
+}

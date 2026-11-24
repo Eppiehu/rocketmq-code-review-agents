@@ -1,0 +1,25 @@
+会话 ID (= LiteTopic = 消息 Key): 2601210448-session-20261123125243-acb61fe2
+
+> mqadmin queryMsgByKey -t rmqai-2601210448-review-task-style -k <会话ID>
+#Message ID                         #QID  #Offset #IndexKey                                                                                                   
+01F6289D077953CC680B16176C00000000  1     1 rmqai-2601210448-review-task-style@K@2601210448-session-20261123125243-acb61fe2@01F6289D077953CC680B16176C00000000
+
+> mqadmin queryMsgByKey -t rmqai-2601210448-review-task-logic -k <会话ID>
+#Message ID                         #QID  #Offset #IndexKey                                                                                                   
+01F6289D077953CC680B16176C00000001  2     3 rmqai-2601210448-review-task-logic@K@2601210448-session-20261123125243-acb61fe2@01F6289D077953CC680B16176C00000001
+
+> mqadmin queryMsgByKey -t rmqai-2601210448-review-task-security -k <会话ID>
+#Message ID                         #QID  #Offset #IndexKey                                                                                                      
+01F6289D077953CC680B16176C00000002  3     2 rmqai-2601210448-review-task-security@K@2601210448-session-20261123125243-acb61fe2@01F6289D077953CC680B16176C00000002
+
+> mqadmin queryMsgByKey -t rmqai-2601210448-review-task-summary -k <会话ID>
+#Message ID                         #QID  #Offset #IndexKey                                                                                                     
+01F6289D077953CC680B16176D00000003  2     0 rmqai-2601210448-review-task-summary@K@2601210448-session-20261123125243-acb61fe2@01F6289D077953CC680B16176D00000003
+
+> mqadmin queryMsgByKey -t rmqai-2601210448-review-result -k <会话ID>
+#Message ID                         #QID  #Offset #IndexKey                                                                                                
+01F6289D07795331300B16176C00000001  0     24 rmqai-2601210448-review-result@K@2601210448-session-20261123125243-acb61fe2@01F6289D07795331300B16176C00000001
+01F6289D0779533F6C0B16176C00000001  0     25 rmqai-2601210448-review-result@K@2601210448-session-20261123125243-acb61fe2@01F6289D0779533F6C0B16176C00000001
+01F6289D07795324A40B16176C00000001  0     26 rmqai-2601210448-review-result@K@2601210448-session-20261123125243-acb61fe2@01F6289D07795324A40B16176C00000001
+01F6289D07795367200B16176E00000001  0     27 rmqai-2601210448-review-result@K@2601210448-session-20261123125243-acb61fe2@01F6289D07795367200B16176E00000001
+
